@@ -60,10 +60,10 @@ endif
 build-fast:
 ifdef SERVICE
 	@echo "$(GREEN)Construction rapide du service $(SERVICE)...$(NC)"
-	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) build --progress=plain $(SERVICE)
+	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) build $(SERVICE)
 else
 	@echo "$(GREEN)Construction rapide de tous les services...$(NC)"
-	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) build --progress=plain
+	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) build
 endif
 
 # Démarrer les conteneurs en arrière-plan
@@ -150,10 +150,10 @@ rebuild-fast:
 	$(call run_xhost)
 ifdef SERVICE
 	@echo "$(YELLOW)Reconstruction rapide et redémarrage du service $(SERVICE) en arrière-plan...$(NC)"
-	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) up -d --build --progress=plain $(SERVICE)
+	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) up -d --build $(SERVICE)
 else
 	@echo "$(YELLOW)Reconstruction rapide et redémarrage de tous les services en arrière-plan...$(NC)"
-	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) up -d --build --progress=plain
+	$(DOCKER_BUILDKIT) $(COMPOSE_DOCKER_CLI_BUILD) $(DOCKER_COMPOSE) up -d --build
 endif
 
 # Reconstruire et redémarrer les conteneurs en avant-plan
